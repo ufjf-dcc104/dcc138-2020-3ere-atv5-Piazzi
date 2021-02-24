@@ -7,7 +7,7 @@ export default class Scene {
     }
 
     draw(){
-        this.fillStyle = "blue";
+        this.ctx.fillStyle = "grey";
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
 }
