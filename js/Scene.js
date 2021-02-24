@@ -9,6 +9,7 @@ export default class Scene {
         this.sprites = [];
         this.t0 = 0;
         this.dt = 0;
+        this.idAnim = null;
     }
 
     draw(){
@@ -37,6 +38,17 @@ export default class Scene {
         this.step(this.dt);
         this.draw();
 
+        this.start();
         this.t0 = t;
+    }
+
+    start(){
+        this.idAnim = requestAnimationFrame((t) => {this.frame(t)});
+    }
+
+    stop(){
+        cancelAnimationFrame(this.idAnim);
+        this.t0 = null;
+        this.dt = 0;
     }
 }
