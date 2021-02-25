@@ -7,6 +7,7 @@ export default class Scene {
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
         this.sprites = [];
+        this.toRemove = [];
         this.t0 = 0;
         this.dt = 0;
         this.idAnim = null;
@@ -54,16 +55,22 @@ export default class Scene {
         this.dt = 0;
     }
 
-    
-
     checkCollision(){
         for (let a = 0; a < this.sprites.length - 1; a++) {
             const spriteA = this.sprites[a];  
             for (let b = a+1; b < this.sprites.length; b++) {
             const spriteB = this.sprites[b];  
             if(spriteA.collidedWith(spriteB))
-            console.log(spriteA,spriteB);
+            this.onCollision(spriteA,spriteB);
             }
         }
+    }
+
+    onCollision(a,b){
+        if(!this.toRemove.includes(a))
+            this.toRemove.push(a);
+        if(!this.toRemove.includes(b))
+            this.toRemove.push(b);
+        console.log(this.toRemove);
     }
 }
