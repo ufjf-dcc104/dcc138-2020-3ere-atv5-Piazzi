@@ -23,4 +23,15 @@ export default class Sprite {
         this.y = this.y + this.vy*dt;
 
     }
+
+    collidedWith(anotherSprite){
+        return !(
+            (this.x > anotherSprite.x + anotherSprite.w)
+            ||(this.x + this.w < anotherSprite.x)
+            ||(this.y > anotherSprite.y + anotherSprite.h)
+            ||(this.y + this.h < anotherSprite.y)
+        );
+    }
+
+   
 }

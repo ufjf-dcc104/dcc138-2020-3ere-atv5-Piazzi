@@ -37,6 +37,8 @@ export default class Scene {
 
         this.step(this.dt);
         this.draw();
+        this.checkCollision();
+
 
         this.start();
         this.t0 = t;
@@ -50,5 +52,18 @@ export default class Scene {
         cancelAnimationFrame(this.idAnim);
         this.t0 = null;
         this.dt = 0;
+    }
+
+    
+
+    checkCollision(){
+        for (let a = 0; a < this.sprites.length - 1; a++) {
+            const spriteA = this.sprites[a];  
+            for (let b = a+1; b < this.sprites.length; b++) {
+            const spriteB = this.sprites[b];  
+            if(spriteA.collidedWith(spriteB))
+            console.log(spriteA,spriteB);
+            }
+        }
     }
 }
