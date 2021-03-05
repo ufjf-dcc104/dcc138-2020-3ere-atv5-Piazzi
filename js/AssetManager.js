@@ -8,9 +8,14 @@ export default class AssetManager{
 
     loadImage(key, source){
         const img1 = new Image();
-        img1.src = source;
+        img1.addEventListener("load", () => {
+            console.log(`Image ${this.loaded}/${this.toLoad} loaded!`);
+            this.loaded++;
+        });
 
+        img1.src = source;
         this.images.set(key, img1);
+        this.toLoad++;
     }
 
 
@@ -23,6 +28,10 @@ export default class AssetManager{
             return `${(this.loaded/this.toLoad*100).toFixed(2)}%`;
         }
         return "Nothing to load";
+    }
+
+    finished(){
+        return this.loaded === this.toLoad;
     }
 
 
