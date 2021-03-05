@@ -9,7 +9,7 @@ export default class AssetManager{
 
     loadAudio(key, source){
         const audio = new Audio();
-        audio.addEventListener("canplay", () => {
+        audio.addEventListener("loadeddata", () => {
             console.log(`Data ${this.loaded}/${this.toLoad} loaded!`);
             this.loaded++;
         });
