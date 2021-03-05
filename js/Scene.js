@@ -3,7 +3,7 @@ export default class Scene {
         É responsável por desenhar elementos na tela 
        em uma animação.
     */
-  constructor(canvas) {
+  constructor(canvas, assets = null) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.sprites = [];
@@ -11,6 +11,7 @@ export default class Scene {
     this.t0 = 0;
     this.dt = 0;
     this.idAnim = null;
+    this.assets = assets;
   }
 
   draw() {
@@ -20,6 +21,9 @@ export default class Scene {
       const sprite = this.sprites[s];
       sprite.draw(this.ctx);
     }
+    
+    this.ctx.fillStyle = "yellow";
+    this.ctx.fillText(this.assets?.progress(), 10, 20);
   }
 
   add(sprite) {
