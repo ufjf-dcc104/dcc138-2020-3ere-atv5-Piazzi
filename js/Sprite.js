@@ -20,7 +20,7 @@ export default class Sprite {
         ctx.fillRect(this.x - this.w/2, this.y - this.h/2, this.w, this.h);
         ctx.strokeStyle = "blue";
         ctx.strokeRect(this.mx*this.scene.map.SIZE, this.my*this.scene.map.SIZE, this.scene.map.SIZE, this.scene.map.SIZE);
-        
+
     }
 
     step(dt){
@@ -28,7 +28,6 @@ export default class Sprite {
         this.y = this.y + this.vy*dt;
         this.mx = Math.floor(this.x / this.scene.map.SIZE);
         this.my = Math.floor(this.y / this.scene.map.SIZE);
-
     }
 
     collidedWith(anotherSprite){
@@ -39,6 +38,31 @@ export default class Sprite {
             ||(this.y + this.h/2 < anotherSprite.y - anotherSprite.h/2)
         );
     }
+
+    appliesRestrictions(dt){
+        const SIZE = this.scene.map.SIZE;
+        if(this.vx > 0){
+            const pmx = this.mx + 1;
+            const pmy = this.my;
+            if(this.scene.map.tiles[pmy][pmx] != 0){
+                const tile = {
+                    x: pmx*SIZE + SIZE/2, 
+                    y: pmy*SIZE + SIZE/2, 
+                    w: SIZE, 
+                    h: SIZE
+                };
+
+                this.scene.ctx.strokeStyle = "white";
+                this.scene.ctx.strokeRect(tile.x - SIZE/2, tile.y - SIZE/2, SIZE, SIZE);
+                if(this.collidedWith(tile)){
+                    this.vx = 0;
+                    this.x = tile.x - tile.w/2 - this.w/2 - 1;
+                }
+
+            }
+        }
+    }
+
 
    
 }

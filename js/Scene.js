@@ -21,11 +21,12 @@ export default class Scene {
 
     this.map?.draw(this.ctx);
 
-    if(this.assets.finished)
+    if(this.assets.finished())
     { 
       for (let s = 0; s < this.sprites.length; s++) {
         const sprite = this.sprites[s];
         sprite.draw(this.ctx);
+        sprite.appliesRestrictions();
       }
     }
     
