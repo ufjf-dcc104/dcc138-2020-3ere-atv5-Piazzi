@@ -12,11 +12,15 @@ export default class Scene {
     this.dt = 0;
     this.idAnim = null;
     this.assets = assets;
+    this.map = null;
   }
 
   draw() {
-    this.ctx.fillStyle = "grey";
+    this.ctx.fillStyle = "lightblue";
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+    this.map?.draw(this.ctx);
+
     if(this.assets.finished)
     { 
       for (let s = 0; s < this.sprites.length; s++) {
@@ -91,5 +95,10 @@ export default class Scene {
         }
     }  
     this.toRemove = [];
+  }
+
+  setsUpMap(map){
+    this.map = map;
+    this.map.scene = this;
   }
 }
