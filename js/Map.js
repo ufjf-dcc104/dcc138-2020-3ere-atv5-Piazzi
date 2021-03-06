@@ -26,6 +26,13 @@ export default class Map {
             ctx.strokeStyle = "black";
             ctx.strokeRect(c * this.SIZE, r * this.SIZE, this.SIZE, this.SIZE);
             break;
+          case 2:
+            ctx.fillStyle = "red";
+            ctx.fillRect(c * this.SIZE, r * this.SIZE, this.SIZE, this.SIZE);
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "orange";
+            ctx.strokeRect(c * this.SIZE, r * this.SIZE, this.SIZE, this.SIZE);
+            break;
           default:
             ctx.fillStyle = "black";
             ctx.fillRect(c * this.SIZE, r * this.SIZE, this.SIZE, this.SIZE);
