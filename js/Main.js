@@ -29,7 +29,9 @@ const en1 = new Sprite({ x: 160, vx: -10,  color: "red" });
 
 scene1.add(pc);
 scene1.add(en1);
-scene1.add(new Sprite({ y: 70,  color: "red" }));
+scene1.add(new Sprite({x: 115, y: 70, vy: 10,  color: "red" }));
+scene1.add(new Sprite({x: 115, y: 160, vy: -10,  color: "red" }));
+
 
 scene1.start();
 

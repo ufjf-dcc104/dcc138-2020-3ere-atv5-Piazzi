@@ -42,6 +42,8 @@ export default class Sprite {
     appliesRestrictions(dt){
         this.appliesRightRestrictions(dt);
         this.appliesLeftRestrictions(dt);
+        this.appliesLowRestrictions(dt);
+        this.appliesUpRestrictions(dt);
     }
 
     appliesRightRestrictions(dt){
@@ -88,6 +90,57 @@ export default class Sprite {
                 if(this.collidedWith(tile)){
                     this.vx = 0;
                     this.x = tile.x + tile.w/2 + this.w/2 + 1;
+                }
+
+            }
+        }
+    }
+
+
+    appliesLowRestrictions(dt){
+        const SIZE = this.scene.map.SIZE;
+
+        if(this.vy > 0){
+            const pmx = this.mx;
+            const pmy = this.my + 1;
+            if(this.scene.map.tiles[pmy][pmx] != 0){
+                const tile = {
+                    x: pmx*SIZE + SIZE/2, 
+                    y: pmy*SIZE + SIZE/2, 
+                    w: SIZE, 
+                    h: SIZE
+                };
+
+                this.scene.ctx.strokeStyle = "white";
+                this.scene.ctx.strokeRect(tile.x - SIZE/2, tile.y - SIZE/2, SIZE, SIZE);
+                if(this.collidedWith(tile)){
+                    this.vy = 0;
+                    this.y = tile.y - tile.h/2 - this.h/2 - 1;
+                }
+
+            }
+        }
+    }
+
+    appliesUpRestrictions(dt){
+        const SIZE = this.scene.map.SIZE;
+
+        if(this.vy < 0){
+            const pmx = this.mx;
+            const pmy = this.my - 1;
+            if(this.scene.map.tiles[pmy][pmx] != 0){
+                const tile = {
+                    x: pmx*SIZE + SIZE/2, 
+                    y: pmy*SIZE + SIZE/2, 
+                    w: SIZE, 
+                    h: SIZE
+                };
+
+                this.scene.ctx.strokeStyle = "white";
+                this.scene.ctx.strokeRect(tile.x - SIZE/2, tile.y - SIZE/2, SIZE, SIZE);
+                if(this.collidedWith(tile)){
+                    this.vy = 0;
+                    this.y = tile.y + tile.h/2 + this.h/2 + 1;
                 }
 
             }
