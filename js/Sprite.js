@@ -14,7 +14,7 @@ export default class Sprite {
 
     draw(ctx) {
         ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, this.w, this.h);
+        ctx.fillRect(this.x - this.w/2, this.y - this.h/2, this.w, this.h);
 
     }
 
@@ -25,11 +25,11 @@ export default class Sprite {
     }
 
     collidedWith(anotherSprite){
-        return !(
-            (this.x > anotherSprite.x + anotherSprite.w)
-            ||(this.x + this.w < anotherSprite.x)
-            ||(this.y > anotherSprite.y + anotherSprite.h)
-            ||(this.y + this.h < anotherSprite.y)
+        return !((
+               this.x - this.w/2 > anotherSprite.x + anotherSprite.w/2)
+            ||(this.x + this.w/2 < anotherSprite.x - anotherSprite.w/2)
+            ||(this.y - this.h/2> anotherSprite.y + anotherSprite.h/2)
+            ||(this.y + this.h/2 < anotherSprite.y - anotherSprite.h/2)
         );
     }
 
