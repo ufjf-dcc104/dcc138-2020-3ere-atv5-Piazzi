@@ -34,6 +34,7 @@ export default class Scene {
   }
 
   add(sprite) {
+    sprite.scene = this;
     this.sprites.push(sprite);
   }
 
