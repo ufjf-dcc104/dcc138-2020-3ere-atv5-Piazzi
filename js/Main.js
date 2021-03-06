@@ -3,6 +3,7 @@ import Map from "./Map.js";
 import Mixer from "./Mixer.js";
 import Scene from "./Scene.js";
 import Sprite from "./Sprite.js";
+import mapModel1 from "../maps/map1.js";
 
 const mixer = new Mixer(10);
 const assets = new AssetManager(mixer);
@@ -20,6 +21,7 @@ canvas.height = 10*32;
 const scene1 = new Scene(canvas, assets);
 
 const map1 = new Map(10, 14, 32);
+map1.loadMap(mapModel1);
 scene1.setsUpMap(map1);
 
 const pc = new Sprite({ vx: 10 });
