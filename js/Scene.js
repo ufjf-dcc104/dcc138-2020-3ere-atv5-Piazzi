@@ -124,7 +124,7 @@ export default class Scene {
     return sprites;
   }
 
-  addRandomSpritesToScene(num)
+  addRandomSprites(num)
   {
     let sprites = this.createRandomSprites(num);
     for (let i = 0; i < sprites.length; i++) {
@@ -146,4 +146,5 @@ export default class Scene {
     }
     return color;
   }
+
 }
