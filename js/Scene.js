@@ -109,7 +109,7 @@ export default class Scene {
     this.map.scene = this;
   }
 
-  createRandomSprites(num) {
+  createRandomSprites(num = 1) {
     let sprites = [];
     for (let i = 0; i < num; i++) {
       let sprite = new Sprite({
@@ -147,4 +147,11 @@ export default class Scene {
     return color;
   }
 
+  // interval in milliseconds
+  spawnSpriteEveryInterval(interval){
+    setInterval(() => {
+      this.addRandomSprites(1);
+    }, interval);
+  
+  }
 }
