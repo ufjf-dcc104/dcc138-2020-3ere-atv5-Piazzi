@@ -24,13 +24,14 @@ const map1 = new Map(10, 14, 32);
 map1.loadMap(mapModel1);
 scene1.setsUpMap(map1);
 
-const pc = new Sprite({ x: 50, y: 150, vx: 10 });
+const pc = new Sprite({ x: 40, y: 275, vx: 10 });
 const en1 = new Sprite({ x: 160, vx: -10,  color: "red" });
 
 scene1.add(pc);
 scene1.add(en1);
 scene1.add(new Sprite({x: 115, y: 70, vy: 10,  color: "red" }));
 scene1.add(new Sprite({x: 115, y: 160, vy: -10,  color: "red" }));
+scene1.addRandomSpritesToScene(20);
 
 
 scene1.start();

@@ -1,3 +1,5 @@
+import Sprite from "./Sprite.js";
+
 export default class Scene {
   /* 
         É responsável por desenhar elementos na tela 
@@ -21,15 +23,14 @@ export default class Scene {
 
     this.map?.draw(this.ctx);
 
-    if(this.assets.finished())
-    { 
+    if (this.assets.finished()) {
       for (let s = 0; s < this.sprites.length; s++) {
         const sprite = this.sprites[s];
         sprite.draw(this.ctx);
         sprite.appliesRestrictions();
       }
     }
-    
+
     this.ctx.fillStyle = "yellow";
     this.ctx.fillText(this.assets?.progress(), 10, 20);
   }
@@ -40,8 +41,7 @@ export default class Scene {
   }
 
   step(dt) {
-    if(this.assets.finished)
-    {
+    if (this.assets.finished) {
       for (const sprite of this.sprites) {
         sprite.step(dt);
       }
@@ -91,16 +91,54 @@ export default class Scene {
 
   removeSprites() {
     for (const target of this.toRemove) {
-        const idx = this.sprites.indexOf(target);
-        if (idx >= 0) {
-            this.sprites.splice(idx, 1);
-        }
-    }  
+      const idx = this.sprites.indexOf(target);
+      if (idx >= 0) {
+        this.sprites.splice(idx, 1);
+      }
+    }
     this.toRemove = [];
   }
 
-  setsUpMap(map){
+  setsUpMap(map) {
     this.map = map;
     this.map.scene = this;
+  }
+
+  createRandomSprites(num) {
+    let sprites = [];
+    for (let i = 0; i < num; i++) {
+      let sprite = new Sprite({
+        x: this.getRandomInt(40, 400),
+        y: this.getRandomInt(50, 275),
+        vx: this.getRandomInt(-10, 10),
+        vy: this.getRandomInt(-10, 10),
+        color: this.getRandomColor(),
+      });
+      sprites.push(sprite);
+    }
+    return sprites;
+  }
+
+  addRandomSpritesToScene(num)
+  {
+    let sprites = this.createRandomSprites(num);
+    for (let i = 0; i < sprites.length; i++) {
+      this.add(sprites[i]);
+    }
+  }
+
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  getRandomColor() {
+    let letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
   }
 }
