@@ -20,22 +20,17 @@ export default class Map {
       for (let c = 0; c < this.COLUMNS; c++) {
         switch (this.tiles[r][c]) {
           case 1:
-            ctx.fillStyle = "grey";
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "black";
+            ctx.drawImage(this.scene.assets.img("wall"), c*this.SIZE, r*this.SIZE);
             break;
           case 2:
-            ctx.fillStyle = "red";
-            ctx.lineWidth = 2;
-            ctx.strokeStyle = "orange";
+            ctx.drawImage(this.scene.assets.img("lava"), c*this.SIZE, r*this.SIZE);
             break;
           default:
-            ctx.fillStyle = "black";
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "grey";
+            ctx.drawImage(this.scene.assets.img("ground"), c*this.SIZE, r*this.SIZE);
+
         }
-        ctx.fillRect(c * this.SIZE, r * this.SIZE, this.SIZE, this.SIZE);
-        ctx.strokeRect(c * this.SIZE, r * this.SIZE, this.SIZE, this.SIZE);
+        //ctx.fillRect(c * this.SIZE, r * this.SIZE, this.SIZE, this.SIZE);
+        //ctx.strokeRect(c * this.SIZE, r * this.SIZE, this.SIZE, this.SIZE);
 
       }
     }
