@@ -27,6 +27,7 @@ export default class Mixer {
             {
                 channel.audio.src = audio.src;
                 channel.end = now + audio.duration*1000;
+                channel.audio.volume = 0.5;
                 channel.audio.play();
                 break;
             }

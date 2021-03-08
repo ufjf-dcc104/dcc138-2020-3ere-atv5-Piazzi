@@ -78,14 +78,19 @@ export default class Scene {
       const spriteA = this.sprites[a];
       for (let b = a + 1; b < this.sprites.length; b++) {
         const spriteB = this.sprites[b];
-        if (spriteA.collidedWith(spriteB)) this.onCollision(spriteA, spriteB);
+        if (spriteA.collidedWith(spriteB)) 
+          this.onCollision(spriteA, spriteB);
       }
     }
   }
 
   onCollision(a, b) {
-    if (!this.toRemove.includes(a)) this.toRemove.push(a);
-    if (!this.toRemove.includes(b)) this.toRemove.push(b);
+    if (!this.toRemove.includes(a)) 
+      this.toRemove.push(a);
+    if (!this.toRemove.includes(b)) 
+      this.toRemove.push(b);
+
+    this.assets.play("boom");  
     console.log(this.toRemove);
   }
 
