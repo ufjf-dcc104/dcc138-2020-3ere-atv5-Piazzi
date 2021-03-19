@@ -27,6 +27,9 @@ canvas.height = 10 * 32;
 input.configureKeyboard({
   ArrowLeft: "MOVE_LEFT",
   ArrowRight: "MOVE_RIGHT",
+  ArrowUp: "MOVE_UP",
+  ArrowDown: "MOVE_DOWN",
+
 });
 
 const scene1 = new Scene(canvas, assets);
@@ -35,7 +38,7 @@ const map1 = new Map(10, 14, 32);
 map1.loadMap(mapModel1);
 scene1.setsUpMap(map1);
 
-const pc = new Sprite({ x: 40, y: 275 });
+const pc = new Sprite({ x: 50, y: 275 });
 pc.control = function (dt) {
   if (input.commands.get("MOVE_LEFT")) {
     this.vx = -50;
@@ -43,6 +46,14 @@ pc.control = function (dt) {
     this.vx = +50;
   } else {
     this.vx = 0;
+  }
+
+  if (input.commands.get("MOVE_UP")) {
+    this.vy = -50;
+  } else if (input.commands.get("MOVE_DOWN")) {
+    this.vy = +50;
+  } else {
+    this.vy = 0;
   }
 };
 const en1 = new Sprite({ x: 160, vx: -10, color: "red" });
