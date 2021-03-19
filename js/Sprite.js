@@ -2,7 +2,7 @@ export default class Sprite {
     /*
         É responsável por modelar algo que se move na tela.
      */
-    constructor({x = 100, y = 100, vx = 0, vy = 0, w = 20, h = 20, color = "white"} = {}){
+    constructor({x = 100, y = 100, vx = 0, vy = 0, control = () => {}, w = 20, h = 20, color = "white"} = {}){
         this.x = x;
         this.y = y;
         this.vx = vx;
@@ -13,6 +13,7 @@ export default class Sprite {
         this.scene = null;
         this.mx = 0;
         this.my = 0;
+        this.control = control
     }
 
     draw(ctx) {
@@ -24,7 +25,7 @@ export default class Sprite {
     }
 
     control(dt){
-        
+
     }
 
     move(dt){

@@ -56,12 +56,17 @@ pc.control = function (dt) {
     this.vy = 0;
   }
 };
-const en1 = new Sprite({ x: 160, vx: -10, color: "red" });
-
 scene1.add(pc);
+
+function chasePC(dt) {
+  this.vx = 25*Math.sign(pc.x - this.x);
+  this.vy = 25*Math.sign(pc.y - this.y);
+};
+
+const en1 = new Sprite({ x: 360, color: "red", control: chasePC });
 scene1.add(en1);
-scene1.add(new Sprite({ x: 115, y: 70, vy: 10, color: "red" }));
-scene1.add(new Sprite({ x: 115, y: 160, vy: -10, color: "red" }));
+scene1.add(new Sprite({ x: 115, y: 70, vy: 10, color: "red", control: chasePC }));
+scene1.add(new Sprite({ x: 115, y: 160, vy: -10, color: "red", control: chasePC }));
 scene1.addRandomSprites(10);
 scene1.spawnSpriteEveryInterval(4000);
 
