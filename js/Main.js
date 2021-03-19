@@ -4,7 +4,7 @@ import Mixer from "./Mixer.js";
 import Scene from "./Scene.js";
 import Sprite from "./Sprite.js";
 import mapModel1 from "../maps/map1.js";
-import InputManager from "./InputManager.js"
+import InputManager from "./InputManager.js";
 
 const input = new InputManager();
 const mixer = new Mixer(10);
@@ -25,8 +25,8 @@ canvas.width = 14 * 32;
 canvas.height = 10 * 32;
 
 input.configureKeyboard({
-    "ArrowLeft": "MOVE_LEFT",
-    "ArrowRight": "MOVE_RIGHT",
+  ArrowLeft: "MOVE_LEFT",
+  ArrowRight: "MOVE_RIGHT",
 });
 
 const scene1 = new Scene(canvas, assets);
@@ -35,7 +35,16 @@ const map1 = new Map(10, 14, 32);
 map1.loadMap(mapModel1);
 scene1.setsUpMap(map1);
 
-const pc = new Sprite({ x: 40, y: 275, vx: 10 });
+const pc = new Sprite({ x: 40, y: 275 });
+pc.control = function (dt) {
+  if (input.commands.get("MOVE_LEFT")) {
+    this.vx = -50;
+  } else if (input.commands.get("MOVE_RIGHT")) {
+    this.vx = +50;
+  } else {
+    this.vx = 0;
+  }
+};
 const en1 = new Sprite({ x: 160, vx: -10, color: "red" });
 
 scene1.add(pc);
