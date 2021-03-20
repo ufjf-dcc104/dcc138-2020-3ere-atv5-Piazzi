@@ -28,8 +28,8 @@ export default class Scene {
       }
     }
 
-    this.ctx.fillStyle = "yellow";
-    this.ctx.fillText(this.assets?.progress(), 10, 20);
+    //this.ctx.fillStyle = "yellow";
+    //this.ctx.fillText(this.assets?.progress(), 10, 20);
   }
 
   add(sprite) {

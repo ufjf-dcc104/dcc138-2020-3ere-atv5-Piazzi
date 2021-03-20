@@ -5,8 +5,20 @@ import mapModel1 from "../maps/map1.js";
 
 export default class GameScene extends Scene {
   onCollision(a, b) {
-    if (!this.toRemove.includes(a)) this.toRemove.push(a);
-    if (!this.toRemove.includes(b)) this.toRemove.push(b);
+    
+    if(a.tags.has("pc") && b.tags.has("coin") || b.tags.has("pc") && a.tags.has("coin"))
+    {
+      if (!this.toRemove.includes(a) && a.tags.has("coin")) 
+      this.toRemove.push(a);
+      if (!this.toRemove.includes(b) && b.tags.has("coin")) 
+      this.toRemove.push(b);
+      this.assets.play("coin");
+      return;
+    }
+    if (!this.toRemove.includes(a)) 
+      this.toRemove.push(a);
+    if (!this.toRemove.includes(b)) 
+      this.toRemove.push(b);
 
     if (a.tags.has("pc") && b.tags.has("enemy")) {
       this.game.selectScene("end");
@@ -56,6 +68,7 @@ export default class GameScene extends Scene {
       tags: ["enemy"],
     });
     this.add(en1);
+    
     this.add(
       new Sprite({
         x: 115,
@@ -74,6 +87,33 @@ export default class GameScene extends Scene {
         color: "red",
         control: chasePC,
         tags: ["enemy"],
+      })
+    );
+
+    this.add(
+      new Sprite({
+        x: 55,
+        y: 160,
+        color: "yellow",
+        tags: ["coin"],
+      })
+    );
+
+    this.add(
+      new Sprite({
+        x: 345,
+        y: 60,
+        color: "yellow",
+        tags: ["coin"],
+      })
+    );
+
+    this.add(
+      new Sprite({
+        x: 375,
+        y: 260,
+        color: "yellow",
+        tags: ["coin"],
       })
     );
   }
