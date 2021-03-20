@@ -27,17 +27,17 @@ export default class GameScene extends Scene {
     const scene = this;
     pc.control = function (dt) {
       if (scene.input.commands.get("MOVE_LEFT")) {
-        this.vx = -50;
+        this.vx = -150;
       } else if (scene.input.commands.get("MOVE_RIGHT")) {
-        this.vx = +50;
+        this.vx = +150;
       } else {
         this.vx = 0;
       }
 
       if (scene.input.commands.get("MOVE_UP")) {
-        this.vy = -50;
+        this.vy = -150;
       } else if (scene.input.commands.get("MOVE_DOWN")) {
-        this.vy = +50;
+        this.vy = +150;
       } else {
         this.vy = 0;
       }
