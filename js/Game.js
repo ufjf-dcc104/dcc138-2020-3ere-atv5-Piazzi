@@ -20,7 +20,11 @@ export default class Game {
 
     selectScene(key){
         if(this.scenes.has(key))
+        {
+            this.stop();
             this.scene = this.scenes.get(key)
+            this.start();
+        }
     }
 
     start(){
