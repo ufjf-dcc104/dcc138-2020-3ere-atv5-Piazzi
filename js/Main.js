@@ -6,6 +6,8 @@ import Sprite from "./Sprite.js";
 import mapModel1 from "../maps/map1.js";
 import InputManager from "./InputManager.js";
 import Game from "./Game.js";
+import GameScene from "./GameScene.js";
+import LoadingScene from "./LoadingScene.js";
 
 const input = new InputManager();
 const mixer = new Mixer(10);
@@ -35,9 +37,12 @@ input.configureKeyboard({
 
 const game = new Game(canvas, assets, input);
 
-const scene1 = new Scene(canvas, assets);
+const scene0 = new LoadingScene(canvas, assets);
+const scene1 = new GameScene(canvas, assets);
 
+game.addScene("loading", scene0);
 game.addScene("game", scene1);
+
 
 const map1 = new Map(10, 14, 32);
 map1.loadMap(mapModel1);
