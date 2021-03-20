@@ -75,15 +75,15 @@ scene1.add(new Sprite({ x: 115, y: 160, vy: -10, color: "red", control: chasePC 
 //scene1.addRandomSprites(10);
 //scene1.spawnSpriteEveryInterval(4000);
 
-scene1.start();
+game.start();
 
 document.addEventListener("keydown", (e) => {
   switch (e.key) {
     case "s":
-      scene1.start();
+      game.start();
       break;
     case "S":
-      scene1.stop();
+      game.stop();
       break;
     case "c":
       assets.play("coin");
