@@ -13,6 +13,7 @@ export default class GameScene extends Scene {
       if (!this.toRemove.includes(b) && b.tags.has("coin")) 
       this.toRemove.push(b);
       this.assets.play("coin");
+      this.score++;
       return;
     }
     if (!this.toRemove.includes(a)) 

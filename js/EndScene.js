@@ -13,11 +13,17 @@ export default class EndScene extends Scene {
       this.canvas.height / 2
     );
 
+    this.ctx.fillText(
+      "Your Score: "+this.score,
+      this.canvas.width / 2,
+      this.canvas.height / 2 + 40
+    );
+
     if (this.assets.finished()) {
       this.ctx.fillText(
         "Press space to play again",
         this.canvas.width / 2,
-        this.canvas.height / 2 + 40
+        this.canvas.height / 2 + 80
       );
     }
   }

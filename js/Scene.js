@@ -11,6 +11,7 @@ export default class Scene {
     this.assets = assets;
     this.sprites = [];
     this.game = null;
+    this.score = 0;
     this.prepare();
   }
 
@@ -28,8 +29,9 @@ export default class Scene {
       }
     }
 
-    //this.ctx.fillStyle = "yellow";
+    this.ctx.fillStyle = "yellow";
     //this.ctx.fillText(this.assets?.progress(), 10, 20);
+    this.ctx.fillText("Score: " + this.score,40,20);
   }
 
   add(sprite) {
