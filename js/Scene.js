@@ -120,6 +120,7 @@ export default class Scene {
         vx: this.getRandomInt(-10, 10),
         vy: this.getRandomInt(-10, 10),
         color: this.getRandomColor(),
+        tags: ["enemy"],
       });
       sprites.push(sprite);
     }
