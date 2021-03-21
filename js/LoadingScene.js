@@ -28,6 +28,8 @@ export default class LoadingScene extends Scene {
 
     if (this.assets.finished() && this.input.commands.get("NEXT_SCENE")) {
       this.game.selectScene("game");
+      this.game.assets.play("music");
+
       return;
     }
     this.draw();
