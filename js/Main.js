@@ -6,6 +6,8 @@ import GameScene from "./GameScene.js";
 import GameScene2 from "./GameScene2.js";
 import LoadingScene from "./LoadingScene.js";
 import EndScene from "./EndScene.js";
+import FinalScene from "./FinalScene.js";
+
 
 const input = new InputManager();
 const mixer = new Mixer(10);
@@ -40,12 +42,16 @@ const scene0 = new LoadingScene();
 const scene1 = new GameScene();
 const scene2 = new GameScene2();
 const scene3 = new EndScene();
+const scene4 = new FinalScene();
+
 
 
 game.addScene("loading", scene0);
 game.addScene("game", scene1);
 game.addScene("game2", scene2);
 game.addScene("end", scene3);
+game.addScene("final", scene4);
+
 
 
 

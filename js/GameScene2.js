@@ -10,7 +10,7 @@ export default class GameScene2 extends Scene {
       (a.tags.has("pc") && b.tags.has("portal")) ||
       (b.tags.has("pc") && a.tags.has("portal"))
     ) {
-      this.game.selectScene("end");
+      this.game.selectScene("final");
       return;
     }
 
