@@ -1,4 +1,5 @@
 export default class Game {
+    
     constructor(canvas, assets, input){
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
@@ -6,6 +7,8 @@ export default class Game {
         this.input = input;
         this.scenes = new Map();
         this.scene = null;
+        this.assets.play("music");
+
     }
 
     addScene(key, scene){

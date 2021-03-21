@@ -16,12 +16,15 @@ const assets = new AssetManager(mixer);
 assets.loadImage("ground", "assets/ground.png");
 assets.loadImage("lava", "assets/lava.png");
 assets.loadImage("wall", "assets/wall.png");
-
 assets.loadImage("garota", "assets/garota.png");
 assets.loadImage("esqueleto", "assets/skelly.png");
 assets.loadImage("orc", "assets/orc.png");
 assets.loadAudio("coin", "assets/coin.wav");
 assets.loadAudio("boom", "assets/boom.wav");
+assets.loadAudio("portal", "assets/portal.wav");
+assets.loadAudio("music", "assets/music.mp3");
+
+
 
 const canvas = document.querySelector("canvas");
 canvas.width = 14 * 32;

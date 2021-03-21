@@ -10,6 +10,7 @@ export default class GameScene extends Scene {
     // checa se chegou no portal para trocar de fase
     if(a.tags.has("pc") && b.tags.has("portal") || b.tags.has("pc") && a.tags.has("portal"))
     {
+        this.assets.play("portal");
         this.game.selectScene("game2")
       return;
     }
