@@ -24,8 +24,8 @@ export default class Sprite {
     draw(ctx) {
         ctx.fillStyle = this.color;
         ctx.fillRect(this.x - this.w/2, this.y - this.h/2, this.w, this.h);
-        ctx.strokeStyle = "blue";
-        ctx.strokeRect(this.mx*this.scene.map.SIZE, this.my*this.scene.map.SIZE, this.scene.map.SIZE, this.scene.map.SIZE);
+        //ctx.strokeStyle = "blue";
+        //ctx.strokeRect(this.mx*this.scene.map.SIZE, this.my*this.scene.map.SIZE, this.scene.map.SIZE, this.scene.map.SIZE);
 
     }
 
@@ -85,8 +85,8 @@ export default class Sprite {
                     h: SIZE
                 };
 
-                this.scene.ctx.strokeStyle = "white";
-                this.scene.ctx.strokeRect(tile.x - SIZE/2, tile.y - SIZE/2, SIZE, SIZE);
+                //this.scene.ctx.strokeStyle = "white";
+                //this.scene.ctx.strokeRect(tile.x - SIZE/2, tile.y - SIZE/2, SIZE, SIZE);
                 if(this.collidedWith(tile)){
                     this.vx = 0;
                     this.x = tile.x - tile.w/2 - this.w/2 - 1;
@@ -108,8 +108,8 @@ export default class Sprite {
                     h: SIZE
                 };
 
-                this.scene.ctx.strokeStyle = "white";
-                this.scene.ctx.strokeRect(tile.x - SIZE/2, tile.y - SIZE/2, SIZE, SIZE);
+                //this.scene.ctx.strokeStyle = "white";
+                //this.scene.ctx.strokeRect(tile.x - SIZE/2, tile.y - SIZE/2, SIZE, SIZE);
                 if(this.collidedWith(tile)){
                     this.vx = 0;
                     this.x = tile.x + tile.w/2 + this.w/2 + 1;
@@ -132,8 +132,8 @@ export default class Sprite {
                     h: SIZE
                 };
 
-                this.scene.ctx.strokeStyle = "white";
-                this.scene.ctx.strokeRect(tile.x - SIZE/2, tile.y - SIZE/2, SIZE, SIZE);
+                //this.scene.ctx.strokeStyle = "white";
+                //this.scene.ctx.strokeRect(tile.x - SIZE/2, tile.y - SIZE/2, SIZE, SIZE);
                 if(this.collidedWith(tile)){
                     this.vy = 0;
                     this.y = tile.y - tile.h/2 - this.h/2 - 1;
@@ -155,8 +155,8 @@ export default class Sprite {
                     h: SIZE
                 };
 
-                this.scene.ctx.strokeStyle = "white";
-                this.scene.ctx.strokeRect(tile.x - SIZE/2, tile.y - SIZE/2, SIZE, SIZE);
+                //this.scene.ctx.strokeStyle = "white";
+                //this.scene.ctx.strokeRect(tile.x - SIZE/2, tile.y - SIZE/2, SIZE, SIZE);
                 if(this.collidedWith(tile)){
                     this.vy = 0;
                     this.y = tile.y + tile.h/2 + this.h/2 + 1;
