@@ -104,8 +104,8 @@ export default class GameScene2 extends Scene {
 
     this.add(
       new Sprite({
-        x: 55,
-        y: 160,
+        x: 50,
+        y: 50,
         color: "yellow",
         tags: ["coin"],
       })
@@ -122,7 +122,7 @@ export default class GameScene2 extends Scene {
 
     this.add(
       new Sprite({
-        x: 275,
+        x: 205,
         y: 260,
         color: "yellow",
         tags: ["coin"],
@@ -132,7 +132,7 @@ export default class GameScene2 extends Scene {
     this.add(
       new Sprite({
         x: 400,
-        y: 250,
+        y: 270,
         color: "blue",
         tags: ["portal"],
       })
