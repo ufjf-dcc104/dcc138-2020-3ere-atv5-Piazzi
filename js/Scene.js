@@ -12,6 +12,7 @@ export default class Scene {
     this.sprites = [];
     this.game = null;
     this.score = 0;
+    this.currentMap = null;
     this.prepare();
   }
 
@@ -157,7 +158,7 @@ export default class Scene {
   
   }
 
-  prepare(){
+  prepare(map){
     this.sprites = [];
     this.toRemove = [];
     this.t0 = null;
@@ -165,5 +166,6 @@ export default class Scene {
     this.idAnim = null;
     this.map = null;
     this.running = true;
+    this.currentMap = map;
   }
 }

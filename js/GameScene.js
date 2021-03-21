@@ -2,10 +2,23 @@ import Map from "./Map.js";
 import Scene from "./Scene.js";
 import Sprite from "./Sprite.js";
 import mapModel1 from "../maps/map1.js";
+import mapModel2 from "../maps/map2.js";
 
 export default class GameScene extends Scene {
+
   onCollision(a, b) {
     
+    // checa se chegou no portal para trocar de fase
+    if(a.tags.has("pc") && b.tags.has("portal") || b.tags.has("pc") && a.tags.has("portal"))
+    {
+      /*if(this.currentMap == mapModel2)
+        this.game.selectScene("end")
+      else*/
+      this.prepare(mapModel2);
+      return;
+    }
+
+    // checa se coletou alguma moeda
     if(a.tags.has("pc") && b.tags.has("coin") || b.tags.has("pc") && a.tags.has("coin"))
     {
       if (!this.toRemove.includes(a) && a.tags.has("coin")) 
@@ -16,6 +29,7 @@ export default class GameScene extends Scene {
       this.score++;
       return;
     }
+
     if (!this.toRemove.includes(a)) 
       this.toRemove.push(a);
     if (!this.toRemove.includes(b)) 
@@ -29,11 +43,12 @@ export default class GameScene extends Scene {
     console.log(this.toRemove);
   }
 
-  prepare() {
-    super.prepare();  
-    const map1 = new Map(10, 14, 32);
-    map1.loadMap(mapModel1);
-    this.setsUpMap(map1);
+  prepare(mapModel = mapModel1) {
+    super.prepare(mapModel);  
+    this.currentMap = mapModel;
+    const map = new Map(10, 14, 32);
+    map.loadMap(mapModel);
+    this.setsUpMap(map);
     
     const pc = new Sprite({ x: 50, y: 275 });
     pc.tags.add("pc");
@@ -111,10 +126,19 @@ export default class GameScene extends Scene {
 
     this.add(
       new Sprite({
-        x: 375,
+        x: 275,
         y: 260,
         color: "yellow",
         tags: ["coin"],
+      })
+    );
+
+    this.add(
+      new Sprite({
+        x: 400,
+        y: 250,
+        color: "blue",
+        tags: ["portal"],
       })
     );
   }

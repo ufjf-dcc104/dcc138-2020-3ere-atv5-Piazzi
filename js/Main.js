@@ -44,8 +44,6 @@ game.addScene("loading", scene0);
 game.addScene("game", scene1);
 game.addScene("end", scene2);
 
-
-
 //scene1.addRandomSprites(10);
 //scene1.spawnSpriteEveryInterval(4000);
 
