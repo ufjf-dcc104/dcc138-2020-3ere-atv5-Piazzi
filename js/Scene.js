@@ -12,7 +12,6 @@ export default class Scene {
     this.sprites = [];
     this.game = null;
     this.score = 0;
-    this.currentMap = null;
     this.prepare();
   }
 
@@ -30,9 +29,9 @@ export default class Scene {
       }
     }
 
-    this.ctx.fillStyle = "yellow";
+    //this.ctx.fillStyle = "yellow";
     //this.ctx.fillText(this.assets?.progress(), 10, 20);
-    this.ctx.fillText("Score: " + this.score,40,20);
+    //this.ctx.fillText("Score: " + this.score,40,20);
   }
 
   add(sprite) {
@@ -158,7 +157,7 @@ export default class Scene {
   
   }
 
-  prepare(map){
+  prepare(){
     this.sprites = [];
     this.toRemove = [];
     this.t0 = null;
@@ -166,6 +165,5 @@ export default class Scene {
     this.idAnim = null;
     this.map = null;
     this.running = true;
-    this.currentMap = map;
   }
 }

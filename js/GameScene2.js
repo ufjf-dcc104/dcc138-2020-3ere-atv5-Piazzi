@@ -1,35 +1,35 @@
 import Map from "./Map.js";
 import Scene from "./Scene.js";
 import Sprite from "./Sprite.js";
-import mapModel1 from "../maps/map1.js";
+import mapModel2 from "../maps/map2.js";
 
-export default class GameScene extends Scene {
-
+export default class GameScene2 extends Scene {
   onCollision(a, b) {
-    
     // checa se chegou no portal para trocar de fase
-    if(a.tags.has("pc") && b.tags.has("portal") || b.tags.has("pc") && a.tags.has("portal"))
-    {
-        this.game.selectScene("game2")
+    if (
+      (a.tags.has("pc") && b.tags.has("portal")) ||
+      (b.tags.has("pc") && a.tags.has("portal"))
+    ) {
+      this.game.selectScene("end");
       return;
     }
 
     // checa se coletou alguma moeda
-    if(a.tags.has("pc") && b.tags.has("coin") || b.tags.has("pc") && a.tags.has("coin"))
-    {
-      if (!this.toRemove.includes(a) && a.tags.has("coin")) 
-      this.toRemove.push(a);
-      if (!this.toRemove.includes(b) && b.tags.has("coin")) 
-      this.toRemove.push(b);
+    if (
+      (a.tags.has("pc") && b.tags.has("coin")) ||
+      (b.tags.has("pc") && a.tags.has("coin"))
+    ) {
+      if (!this.toRemove.includes(a) && a.tags.has("coin"))
+        this.toRemove.push(a);
+      if (!this.toRemove.includes(b) && b.tags.has("coin"))
+        this.toRemove.push(b);
       this.assets.play("coin");
       document.getElementById("score").textContent = parseInt(document.getElementById("score").textContent) + 1;
       return;
     }
 
-    if (!this.toRemove.includes(a)) 
-      this.toRemove.push(a);
-    if (!this.toRemove.includes(b)) 
-      this.toRemove.push(b);
+    if (!this.toRemove.includes(a)) this.toRemove.push(a);
+    if (!this.toRemove.includes(b)) this.toRemove.push(b);
 
     if (a.tags.has("pc") && b.tags.has("enemy")) {
       this.game.selectScene("end");
@@ -39,14 +39,12 @@ export default class GameScene extends Scene {
     console.log(this.toRemove);
   }
 
-  prepare(mapModel = mapModel1) {
-    document.getElementById("score").textContent = 0;
-    super.prepare(mapModel);  
-    this.currentMap = mapModel;
+  prepare() {
+    super.prepare();
     const map = new Map(10, 14, 32);
-    map.loadMap(mapModel);
+    map.loadMap(mapModel2);
     this.setsUpMap(map);
-    
+
     const pc = new Sprite({ x: 50, y: 275 });
     pc.tags.add("pc");
     const scene = this;
@@ -81,7 +79,7 @@ export default class GameScene extends Scene {
       tags: ["enemy"],
     });
     this.add(en1);
-    
+
     this.add(
       new Sprite({
         x: 115,

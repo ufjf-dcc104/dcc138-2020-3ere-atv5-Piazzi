@@ -14,7 +14,7 @@ export default class EndScene extends Scene {
     );
 
     this.ctx.fillText(
-      "Your Score: "+this.score,
+      "Your Score: "+ document.getElementById("score").textContent,
       this.canvas.width / 2,
       this.canvas.height / 2 + 40
     );
@@ -26,6 +26,7 @@ export default class EndScene extends Scene {
         this.canvas.height / 2 + 80
       );
     }
+
   }
 
   frame(t) {

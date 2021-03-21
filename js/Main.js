@@ -3,6 +3,7 @@ import Mixer from "./Mixer.js";
 import InputManager from "./InputManager.js";
 import Game from "./Game.js";
 import GameScene from "./GameScene.js";
+import GameScene2 from "./GameScene2.js";
 import LoadingScene from "./LoadingScene.js";
 import EndScene from "./EndScene.js";
 
@@ -37,12 +38,14 @@ const game = new Game(canvas, assets, input);
 
 const scene0 = new LoadingScene();
 const scene1 = new GameScene();
-const scene2 = new EndScene();
+const scene2 = new GameScene2();
+const scene3 = new EndScene();
 
 
 game.addScene("loading", scene0);
 game.addScene("game", scene1);
-game.addScene("end", scene2);
+game.addScene("game2", scene2);
+game.addScene("end", scene3);
 
 //scene1.addRandomSprites(10);
 //scene1.spawnSpriteEveryInterval(4000);
