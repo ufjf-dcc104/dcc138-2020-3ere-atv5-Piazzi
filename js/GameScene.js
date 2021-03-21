@@ -22,7 +22,7 @@ export default class GameScene extends Scene {
       if (!this.toRemove.includes(b) && b.tags.has("coin")) 
       this.toRemove.push(b);
       this.assets.play("coin");
-      document.getElementById("score").textContent = parseInt(document.getElementById("score").textContent) + 1;
+      super.updateScore()
       return;
     }
 

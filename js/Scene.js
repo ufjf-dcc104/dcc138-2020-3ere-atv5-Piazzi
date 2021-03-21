@@ -167,4 +167,8 @@ export default class Scene {
     this.map = null;
     this.running = true;
   }
+
+  updateScore(){
+    document.getElementById("score").textContent = parseInt(document.getElementById("score").textContent) + 1;
+  }
 }
