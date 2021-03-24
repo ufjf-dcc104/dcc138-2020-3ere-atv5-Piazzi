@@ -32,7 +32,7 @@ export default class GameScene extends Scene {
     if (!this.toRemove.includes(b)) 
       this.toRemove.push(b);
 
-    if (a.tags.has("pc") && b.tags.has("enemy")) {
+    if (a.tags.has("pc") && b.tags.has("enemy") || b.tags.has("pc") && a.tags.has("enemy")) {
       this.game.selectScene("end");
     }
 
@@ -47,7 +47,8 @@ export default class GameScene extends Scene {
     const map = new Map(10, 14, 32);
     map.loadMap(mapModel);
     this.setsUpMap(map);
-    
+    //this.addRandomSprites(5, chasePC, false);
+
     const pc = new Sprite({ x: 50, y: 275 });
     pc.tags.add("pc");
     const scene = this;

@@ -111,7 +111,7 @@ export default class Scene {
     this.map.scene = this;
   }
 
-  createRandomSprites(num = 1) {
+  createRandomSprites(num = 1, chaseFunction, randomColor) {
     let sprites = [];
     for (let i = 0; i < num; i++) {
       let sprite = new Sprite({
@@ -119,17 +119,19 @@ export default class Scene {
         y: this.getRandomInt(50, 275),
         vx: this.getRandomInt(-10, 10),
         vy: this.getRandomInt(-10, 10),
-        color: this.getRandomColor(),
+        color: randomColor == true ? this.getRandomColor() : "red",
         tags: ["enemy"],
+        control: chaseFunction,
+
       });
       sprites.push(sprite);
     }
     return sprites;
   }
 
-  addRandomSprites(num)
+  addRandomSprites(num, chaseFunction, randomColor)
   {
-    let sprites = this.createRandomSprites(num);
+    let sprites = this.createRandomSprites(num, chaseFunction, randomColor);
     for (let i = 0; i < sprites.length; i++) {
       this.add(sprites[i]);
     }

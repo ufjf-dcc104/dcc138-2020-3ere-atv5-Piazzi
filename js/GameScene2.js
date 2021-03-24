@@ -31,7 +31,7 @@ export default class GameScene2 extends Scene {
     if (!this.toRemove.includes(a)) this.toRemove.push(a);
     if (!this.toRemove.includes(b)) this.toRemove.push(b);
 
-    if (a.tags.has("pc") && b.tags.has("enemy")) {
+    if (a.tags.has("pc") && b.tags.has("enemy") || b.tags.has("pc") && a.tags.has("enemy")) {
       this.game.selectScene("end");
     }
 
@@ -44,8 +44,9 @@ export default class GameScene2 extends Scene {
     const map = new Map(10, 14, 32);
     map.loadMap(mapModel2);
     this.setsUpMap(map);
-    //this.addRandomSprites(10);
+    this.addRandomSprites(5, chasePC, false);
     this.spawnSpriteEveryInterval(4000);
+
     const pc = new Sprite({ x: 50, y: 275 });
     pc.tags.add("pc");
     const scene = this;
