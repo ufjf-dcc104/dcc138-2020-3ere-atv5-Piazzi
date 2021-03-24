@@ -44,7 +44,7 @@ export default class GameScene2 extends Scene {
     const map = new Map(10, 14, 32);
     map.loadMap(mapModel2);
     this.setsUpMap(map);
-    this.addRandomSprites(5, chasePC, false);
+    this.addRandomSprites(3, chasePC, false);
     this.spawnSpriteEveryInterval(4000);
 
     const pc = new Sprite({ x: 50, y: 275 });
